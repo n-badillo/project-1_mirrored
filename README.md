@@ -3,4 +3,4 @@ Project 1
 
 Group members:
 Nancy Badillo n_badillo@csu.fullerton.edu
-Griffin Yee
+Griffin Yee griffinyee@csu.fullerton.edu
