@@ -9,18 +9,21 @@ public:
 	Baby() {  // default constructor
 	};
 
-	Baby(string s, int w) { // constructor
-		// TO BE COMPLETED
+	Baby(string s, int w) {
+		name = s;
+		weight = w; 
+							
 	}
 
 	// a "getter" method
 	int getWeight() {
-		return -1; // TO BE COMPLETED
+
+		return weight; 
 	}
 
 	// a "getter" method
 	string getName() {
-		return "COMPLETE ME"; // TO BE COMPLETED
+		return name; 
 	}
 
 private:
