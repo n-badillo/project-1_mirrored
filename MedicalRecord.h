@@ -47,8 +47,28 @@ public:
 	}
 
 	// return the most frequently appearing name in the text file
-	string mostPopularName(string s) {
-		return "COMPLETE ME"; // TO BE COMPLETED
+	string mostPopularName() {
+		int i = 0, j = 0;
+		numOfMostPopularName = 0;
+		numOfOtherName = 0;
+		for (i; i < numOfBabies; i++)
+		{
+			
+			for (j; j < numOfBabies; j++)
+			{
+				if (ptr[i].getName == ptr[j].getName)
+					numOfOtherName++;
+			}
+			if (numOfOtherName > numOfMostPopularName)
+			{
+				numOfMostPopularName = numOfOtherName;
+				numOfOtherName = 0;
+				mostPopName = ptr[i].getName;
+			}
+		}
+			
+		
+		return mostPopName;
 	}
 
 	// return the number of baby records loaded from the text file
@@ -58,12 +78,24 @@ public:
 
 	// return the number of babies who had birth weight < 2500 grams
 	int numberOfBabiesWithLowBirthWeight() {
-		return -1; 
+		for (int i = 0; i < numOfBabies; i++)
+		{
+			if (ptr[i].getWeight < 2500)
+				numOfLowWeight++;
+			else continue; 
+		}
+		return numOfLowWeight;
 	}
 
 	// return the number of babies who have the name contained in string s
 	int numberOfBabiesWithName(string s) {
-		return -1; 
+		for (int i = 0; i < numOfBabies; i++)
+		{
+			if (ptr[i].getName == s)
+				sameName++;
+			else continue; 
+		}
+		return sameName; 
 	}
 
 private:
@@ -72,10 +104,15 @@ private:
 		ptr[counter] = b;
 		counter++;
 	}
-	
+	int numOfLowWeight;
+	int sameName;
 	int numOfBabies;
 	Baby* ptr; 
 	int counter;
+	string mostPopName;
+	int numOfMostPopularName;
+	int numOfOtherName;
+	
 
 	// Add private member variables for your data structuraalong with any 
 	// other variables required to implement the public member functions
