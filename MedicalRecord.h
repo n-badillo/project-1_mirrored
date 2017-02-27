@@ -22,7 +22,9 @@ public:
 	// Load information from a text file with the given filename.
 	void buildMedicalRecordfromDatafile(string filename) {
 		ifstream myfile(filename);
-		while (!myfile.eof())
+		string name;
+		int weight;
+		while (myfile >> name >> weight)
 		{
 			++numOfBabies;
 		}
@@ -33,8 +35,7 @@ public:
 		if (myfile.is_open()) 
 		{
 			cout << "Successfully opened file " << filename << endl;
-			string name;
-			int weight;
+			
 			while (myfile >> name >> weight) {
 				// cout << name << " " << weight << endl;
 				Baby b(name, weight);
@@ -48,26 +49,28 @@ public:
 
 	// return the most frequently appearing name in the text file
 	string mostPopularName() {
-		int i = 0, j = 0;
+		
 		numOfMostPopularName = 0;
 		numOfOtherName = 0;
-		for (i; i < numOfBabies; i++)
+		for (int i=0; i < numOfBabies; i++)
 		{
 			
-			for (j; j < numOfBabies; j++)
+			for (int j=0; j < numOfBabies; j++)
 			{
-				if (ptr[i].getName == ptr[j].getName)
-					numOfOtherName++;
+				if (ptr[i].getName() == ptr[j].getName())
+					++numOfOtherName;
 			}
 			if (numOfOtherName > numOfMostPopularName)
 			{
 				numOfMostPopularName = numOfOtherName;
 				numOfOtherName = 0;
-				mostPopName = ptr[i].getName;
+				mostPopName = ptr[i].getName();
+
 			}
+			
 		}
 			
-		
+		cout << numOfMostPopularName << " " << numOfOtherName << endl;
 		return mostPopName;
 	}
 
@@ -80,7 +83,7 @@ public:
 	int numberOfBabiesWithLowBirthWeight() {
 		for (int i = 0; i < numOfBabies; i++)
 		{
-			if (ptr[i].getWeight < 2500)
+			if (ptr[i].getWeight() < 2500)
 				numOfLowWeight++;
 			else continue; 
 		}
@@ -91,7 +94,7 @@ public:
 	int numberOfBabiesWithName(string s) {
 		for (int i = 0; i < numOfBabies; i++)
 		{
-			if (ptr[i].getName == s)
+			if (ptr[i].getName() == s)
 				sameName++;
 			else continue; 
 		}
