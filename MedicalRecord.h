@@ -71,7 +71,6 @@ public:
 			
 		}
 			
-		cout << numOfMostPopularName << " " << numOfOtherName << endl;
 		return mostPopName;
 	}
 
