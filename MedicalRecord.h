@@ -63,10 +63,11 @@ public:
 			if (numOfOtherName > numOfMostPopularName)
 			{
 				numOfMostPopularName = numOfOtherName;
-				numOfOtherName = 0;
+				
 				mostPopName = ptr[i].getName();
 
 			}
+			numOfOtherName = 0;
 			
 		}
 			
