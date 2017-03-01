@@ -6,19 +6,36 @@ using namespace std;
 // class that contains information related to a single birth or baby name
 class Baby {
 public:
-	Baby() {  // default constructor
+	Baby() { 
+		name = "";
+		weight = 0;// default constructor
 	};
 
-	Baby(string s, int w) {
+	Baby(string s, int w) 
+	{ // constructor
+		
 		name = s;
 		weight = w; 
 							
+	}
+	Baby(const Baby& x) 
+	{ // copy constructor
+		name = x.name;
+		weight = x.weight;
+	}
+	Baby& operator = (const Baby x)
+	{
+		if (this != &x)
+		{
+			name = x.name;
+			weight = x.weight;
+		}
 	}
 
 	// a "getter" method
 	int getWeight() {
 
-		return weight; 
+		return weight;
 	}
 
 	// a "getter" method
@@ -27,6 +44,8 @@ public:
 	}
 
 private:
+	
 	string name;
 	int weight;
+	friend class Medicalrecord;
 };
